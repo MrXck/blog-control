@@ -5,40 +5,40 @@ const routes = [
   {
     path: '/',
     name: 'index',
-    redirect: '/home',
+    redirect: '/blog-control',
     meta: {
       title: '首页'
     },
     component: () => import('../views/Index'),
     children: [
       {
-        path: 'note-control',
-        name: 'note-control',
-        redirect: '/note-control/note',
+        path: 'blog-control',
+        name: 'blog-control',
+        redirect: '/blog-control/blog',
         meta: {
           title: '笔记相关'
         },
         children: [
           {
-            path: 'note',
-            name: 'note',
-            component: () => import('../views/note-page/NoteControl'),
+            path: 'blog',
+            name: 'blog',
+            component: () => import('@/views/blog-page/BlogControl.vue'),
             meta: {
               title: '笔记'
             }
           },
           {
-            path: 'note-edit',
-            name: 'note-add',
-            component: () => import('../views/note-page/AddOrEditNote'),
+            path: 'blog-edit',
+            name: 'blog-add',
+            component: () => import('@/views/blog-page/AddOrEditBlog.vue'),
             meta: {
               title: '笔记新增'
             },
           },
           {
             path: ':id',
-            name: 'note-edit',
-            component: () => import('../views/note-page/AddOrEditNote'),
+            name: 'blog-edit',
+            component: () => import('@/views/blog-page/AddOrEditBlog.vue'),
             meta: {
               title: '笔记编辑'
             }
@@ -46,6 +46,14 @@ const routes = [
         ]
       },
     ]
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: () => import('../views/Login'),
+    meta: {
+      title: '登录'
+    }
   },
   {
     path: '/404',

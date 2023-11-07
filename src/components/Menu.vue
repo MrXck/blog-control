@@ -104,7 +104,7 @@ const menuOptions = [
   },
   {
     label: '笔记相关',
-    key: '/note-control',
+    key: '/blog-control',
     icon: renderIcon(List),
     children: [
       {
@@ -112,12 +112,12 @@ const menuOptions = [
             RouterLink,
             {
               to: {
-                name: 'note-control'
+                name: 'blog-control'
               }
             },
             {default: () => "笔记管理"}
         ),
-        key: '/note-control/note',
+        key: '/blog-control/blog',
         icon: renderIcon(AppsSharp)
       },
     ]
