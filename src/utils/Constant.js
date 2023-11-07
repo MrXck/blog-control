@@ -1,0 +1,1 @@
+export const BASEURL = 'http://127.0.0.1:8000'// export const BASEURL = `http://${BASE_IP}:${BASE_PORT}`export const DateFormat = 'YYYY-MM-DD'export const LoginURL = '/user/login'export const UpdateUserURL = '/user/update'
