@@ -45,6 +45,24 @@ const routes = [
           },
         ]
       },
+      {
+        path: 'blogType-control',
+        name: 'blogType-control',
+        redirect: '/blogType-control/blogType',
+        meta: {
+          title: '分类相关'
+        },
+        children: [
+          {
+            path: 'blogType',
+            name: 'blogType',
+            component: () => import('@/views/type-page/TypeControl.vue'),
+            meta: {
+              title: '分类管理'
+            }
+          },
+        ]
+      },
     ]
   },
   {

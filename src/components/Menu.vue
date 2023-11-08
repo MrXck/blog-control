@@ -109,6 +109,26 @@ const menuOptions = [
       },
     ]
   },
+  {
+    label: '分类相关',
+    key: '/blogType-control',
+    icon: renderIcon(List),
+    children: [
+      {
+        label: () => h(
+            RouterLink,
+            {
+              to: {
+                name: 'blogType-control'
+              }
+            },
+            {default: () => "分类管理"}
+        ),
+        key: '/blogType-control/blogType',
+        icon: renderIcon(AppsSharp)
+      },
+    ]
+  },
 ]
 const message = useMessage()
 const user = ref({
