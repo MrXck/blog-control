@@ -39,6 +39,7 @@ import {GetBlogByPageURL, RemoveBlogByIdURL} from "@/utils/Constant";
 
 
 const data = reactive([])
+const type = reactive([])
 const keyword = ref('')
 const columns = [
   {
@@ -48,6 +49,13 @@ const columns = [
   {
     title: '标题',
     key: 'title',
+  },
+  {
+    title: '分类',
+    key: 'type',
+    render(row) {
+      return type.find(item => item.id === row.typeId).name;
+    }
   },
   {
     title: '创建时间',
@@ -118,6 +126,9 @@ function init() {
   }).then(res => {
     if (res.code === 0) {
       data.length = 0
+      type.length = 0
+
+      type.push(...res.data.blogTypes)
       let page = res.data.page
       pagination.totalPage = page.pages
       pagination.total = page.total
