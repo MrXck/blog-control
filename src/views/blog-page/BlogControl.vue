@@ -1,7 +1,7 @@
 <template>
   <n-space vertical>
     <n-space>
-      <n-button type="info" @click="to({name: 'note-add'})">新增</n-button>
+      <n-button type="info" @click="to({name: 'blog-add'})">新增</n-button>
       <n-input placeholder="请输入标题" v-model:value="keyword" @keydown.enter="init" />
       <n-button @click="init">搜索</n-button>
     </n-space>

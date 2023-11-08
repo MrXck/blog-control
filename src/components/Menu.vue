@@ -90,20 +90,7 @@ const activeKey = ref(route.path)
 let collapsed = ref(false)
 const menuOptions = [
   {
-    label: () => h(
-        RouterLink,
-        {
-          to: {
-            name: 'index',
-          }
-        },
-        {default: () => "首页"}
-    ),
-    key: '/',
-    icon: renderIcon(Home)
-  },
-  {
-    label: '笔记相关',
+    label: '博客相关',
     key: '/blog-control',
     icon: renderIcon(List),
     children: [
@@ -115,7 +102,7 @@ const menuOptions = [
                 name: 'blog-control'
               }
             },
-            {default: () => "笔记管理"}
+            {default: () => "博客管理"}
         ),
         key: '/blog-control/blog',
         icon: renderIcon(AppsSharp)

@@ -16,7 +16,7 @@ const routes = [
         name: 'blog-control',
         redirect: '/blog-control/blog',
         meta: {
-          title: '笔记相关'
+          title: '博客相关'
         },
         children: [
           {
@@ -24,7 +24,7 @@ const routes = [
             name: 'blog',
             component: () => import('@/views/blog-page/BlogControl.vue'),
             meta: {
-              title: '笔记'
+              title: '博客管理'
             }
           },
           {
@@ -32,7 +32,7 @@ const routes = [
             name: 'blog-add',
             component: () => import('@/views/blog-page/AddOrEditBlog.vue'),
             meta: {
-              title: '笔记新增'
+              title: '博客新增'
             },
           },
           {
@@ -40,7 +40,7 @@ const routes = [
             name: 'blog-edit',
             component: () => import('@/views/blog-page/AddOrEditBlog.vue'),
             meta: {
-              title: '笔记编辑'
+              title: '博客编辑'
             }
           },
         ]
