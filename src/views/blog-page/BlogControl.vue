@@ -31,11 +31,11 @@
 </template>
 
 <script setup>
-import {NButton, NDataTable, NSpace, NPagination, useMessage, NInput} from 'naive-ui'
+import {NButton, NDataTable, NSpace, NPagination, useMessage, NInput, NSwitch} from 'naive-ui'
 import {to} from '@/utils/routerUtils'
 import {h, onMounted, reactive, ref} from "vue";
 import request from "@/utils/request";
-import {GetBlogByPageURL, RemoveBlogByIdURL} from "@/utils/Constant";
+import {GetBlogByPageURL, RemoveBlogByIdURL, UpdateBlogURL} from "@/utils/Constant";
 
 
 const data = reactive([])
@@ -55,6 +55,19 @@ const columns = [
     key: 'type',
     render(row) {
       return type.find(item => item.id === row.typeId).name;
+    }
+  },
+  {
+    title: '是否显示',
+    key: 'isShow',
+    render(row) {
+      return h(NSwitch, {
+        value: row.isShow,
+        onUpdateValue: (value) => {
+          row.isShow = value
+          update(row)
+        }
+      });
     }
   },
   {
@@ -156,6 +169,16 @@ function deleteById(id) {
 
 function rowKey(row) {
   return row.id
+}
+
+function update(data) {
+  request.post(UpdateBlogURL, data).then(res => {
+    if (res.code === 0) {
+      message.success('操作成功')
+    } else {
+      message.error(res.msg)
+    }
+  })
 }
 
 onMounted(() => {

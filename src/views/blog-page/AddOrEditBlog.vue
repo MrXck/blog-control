@@ -18,6 +18,9 @@
       >
         上传文件
       </n-upload>
+      <n-space>
+        <n-switch v-model:value="note.isShow" @update:value="changeValue" /> 是否显示
+      </n-space>
     </n-space>
     <n-button @click="save">提交</n-button>
   </n-space>
@@ -25,7 +28,7 @@
 </template>
 
 <script setup>
-import {NSpace, NInput, NButton, useMessage, NSelect, NUpload} from 'naive-ui'
+import {NSpace, NInput, NButton, useMessage, NSelect, NUpload, NSwitch} from 'naive-ui'
 import {onMounted, reactive, ref} from "vue";
 import {useRoute} from "vue-router";
 import {AddBlogURL, GetAllBlogTypeURL, GetBlogByIdURL, UpdateBlogURL, uploadURL, BASEURL} from "@/utils/Constant";
@@ -63,6 +66,7 @@ const note = ref({
   content: '',
   typeId: 1,
   image: '',
+  isShow: true,
 })
 
 
@@ -141,6 +145,10 @@ function getType() {
 
 function handleChange(val) {
   note.value.content = val
+}
+
+function changeValue(value) {
+  note.value.isShow = value
 }
 
 onMounted(() => {
