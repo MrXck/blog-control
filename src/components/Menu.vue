@@ -2,7 +2,7 @@
   <n-layout>
     <n-layout-header class="header">
       <div class="title" @click="to('/')">
-        待办事项
+        博客后台
       </div>
       <div class="bread">
         <n-breadcrumb>

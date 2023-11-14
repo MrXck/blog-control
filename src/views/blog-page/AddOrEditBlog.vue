@@ -56,7 +56,6 @@ const plugins = [
 const options = reactive([])
 const route = useRoute();
 const message = useMessage();
-let editor = null
 let token = localStorage.getItem('token')
 const type = ref('add')
 const isLoading = ref(true)
@@ -131,6 +130,9 @@ function getType() {
   request.get(GetAllBlogTypeURL).then(res => {
     if (res.code === 0) {
       const data = res.data.blogTypes
+      // if (data.length > 0) {
+        note.value.typeId = data[data.length - 1]?.id
+      // }
       for (let i = 0; i < data.length; i++) {
         options.push({
           label: data[i].name,
@@ -172,10 +174,6 @@ onMounted(() => {
 </script>
 
 <style scoped>
-.editor {
-  height: 700px;
-}
-
 :deep(.bytemd) {
   height: 700px;
 }

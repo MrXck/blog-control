@@ -114,7 +114,7 @@ router.beforeEach((to, from, next) => {
 
 router.afterEach((to, from) => {
   // 后置守卫一般用来 优化用户的体验 例如切换路由时更改页面的title
-  document.querySelector('title').innerText = to.meta.title + ' - 待办事项'
+  document.querySelector('title').innerText = to.meta.title + ' - 博客后台'
   loadingBar.finish()
 })
 
