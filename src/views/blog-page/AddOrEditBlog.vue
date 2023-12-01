@@ -6,15 +6,17 @@
               @change="handleChange"/>
     </div>
     <n-space vertical>
-      <n-select v-model:value="note.typeId" :options="options" @update:value="change"/>
+      <n-select v-model:value="note.typeId" :options="options"/>
       <n-upload
           list-type="image-card"
           :max="1"
           :headers="{
             'authorization': token
           }"
-          :action="BASEURL + uploadURL"
+          :default-file-list="fileList"
           @finish="uploadFinish"
+          :action="BASEURL + uploadURL"
+          @remove="change"
       >
         上传文件
       </n-upload>
@@ -54,6 +56,11 @@ const plugins = [
 ]
 
 const options = reactive([])
+const fileList = ref([{
+  id: "c",
+  status: "finished",
+  url: ""
+}])
 const route = useRoute();
 const message = useMessage();
 let token = localStorage.getItem('token')
@@ -90,8 +97,8 @@ function save() {
 
 }
 
-function change(value) {
-  console.log(value)
+function change() {
+  note.value.image = ''
 }
 
 function uploadFinish(data) {
@@ -160,6 +167,7 @@ onMounted(() => {
     request.get(GetBlogByIdURL + route.params.id).then(res => {
       if (res.code === 0) {
         note.value = res.data.blog
+        fileList.value[0].url = res.data.blog.image
       } else {
         message.error(res.msg)
       }
