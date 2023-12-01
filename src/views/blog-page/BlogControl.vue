@@ -141,7 +141,9 @@ function init() {
       data.length = 0
       type.length = 0
 
-      type.push(...res.data.blogTypes)
+      if (res.data.blogTypes && res.data.blogTypes.length > 0) {
+        type.push(...res.data.blogTypes)
+      }
       let page = res.data.page
       pagination.totalPage = page.pages
       pagination.total = page.total
